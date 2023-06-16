@@ -142,13 +142,13 @@
       this[globalName] = mainExports;
     }
   }
-})({"j9r0q":[function(require,module,exports) {
+})({"iUuJd":[function(require,module,exports) {
 var global = arguments[3];
 var HMR_HOST = null;
 var HMR_PORT = null;
 var HMR_SECURE = false;
 var HMR_ENV_HASH = "d6ea1d42532a7575";
-module.bundle.HMR_BUNDLE_ID = "ba60c367739bf03c";
+module.bundle.HMR_BUNDLE_ID = "9e37e43a137098e6";
 "use strict";
 /* global HMR_HOST, HMR_PORT, HMR_ENV_HASH, HMR_SECURE, chrome, browser, __parcel__import__, __parcel__importScripts__, ServiceWorkerGlobalScope */ /*::
 import type {
@@ -573,129 +573,14 @@ function hmrAccept(bundle /*: ParcelRequire */ , id /*: string */ ) {
     });
 }
 
-},{}],"ebWYT":[function(require,module,exports) {
-var _catApiJs = require("./cat-api.js");
-var _delayJs = require("./delay.js");
-const select = document.querySelector(".breed-select");
-const catInfo = document.querySelector(".cat-info");
-let catIparagraph1 = document.createElement("p");
-let catIparagraph2 = document.createElement("p");
-let catIparagraph3 = document.createElement("p");
-const loaderP = document.querySelector(".loader");
-const errorP = document.querySelector(".error");
-let breedId;
-errorP.style.display = "none";
-loaderP.style.display = "block";
-(0, _catApiJs.fetchBreeds)().then((breeds)=>{
-    breeds.map(function(elemento) {
-        const option = document.createElement("option");
-        option.textContent = elemento.name;
-        option.value = elemento.id;
-        select.appendChild(option);
-        console.log(option);
-    });
-    (0, _delayJs.espera)();
-    loaderP.style.display = "none";
-}).catch((error)=>{
-    // Handling errors appropriately
-    (0, _delayJs.espera)();
-    loaderP.style.display = "none";
-    errorP.style.display = "block";
-});
+},{}],"7LE31":[function(require,module,exports) {
 document.addEventListener("DOMContentLoaded", function() {
-    let selection = document.querySelector(".breed-select");
+    var select = document.querySelector("#mySelect");
     new SlimSelect({
-        selection: selection
-    });
-});
-select.addEventListener("change", function(event) {
-    const selectedBreed = event.target.value;
-    console.log("Selected breed:", selectedBreed);
-    breedId = selectedBreed;
-    console.log("Selected breed:", breedId);
-    loaderP.style.display = "block";
-    (0, _catApiJs.fetchCatByBreed)(breedId).then((data)=>{
-        console.log(data);
-        (0, _delayJs.espera)();
-        loaderP.style.display = "none";
-        catIparagraph1.textContent = `Breed name: ${data[0].breeds[0].name}`;
-        catInfo.appendChild(catIparagraph1);
-        catIparagraph2.textContent = `Description: ${data[0].breeds[0].description}`;
-        catInfo.appendChild(catIparagraph2);
-        catIparagraph3.textContent = `Temperament: ${data[0].breeds[0].temperament}`;
-        catInfo.appendChild(catIparagraph3);
-    }).catch((error)=>{
-        // Handling errors appropriately
-        loaderP.style.display = "none";
-        errorP.style.display = "block";
+        select: select
     });
 });
 
-},{"./cat-api.js":"5IWAT","./delay.js":"ahg8w"}],"5IWAT":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-// Export functions
-parcelHelpers.export(exports, "fetchBreeds", ()=>fetchBreeds);
-parcelHelpers.export(exports, "fetchCatByBreed", ()=>fetchCatByBreed);
-function fetchBreeds() {
-    return fetch("https://api.thecatapi.com/v1/breeds").then((response)=>response.json()).catch((error)=>{
-        console.error("Error fetching cat breeds:", error);
-        throw error;
-    });
-}
-///////////////////////////////////////////////////////////////////
-function fetchCatByBreed(bId) {
-    url = "https://api.thecatapi.com/v1/images/search?limit=1&breed_ids=" + bId + "&api_key=live_mVq2zTruppUyrfZ8JMesPxWS95e2tUJNkjfU8aecOjMITbSZgYOyUifuJ0sK0gcZ";
-    return fetch(url).then((response)=>response.json()).catch((error)=>{
-        console.error("Error fetching cat breeds:", error);
-        throw error;
-    });
-}
+},{}]},["iUuJd","7LE31"], "7LE31", "parcelRequireabb0")
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}],"gkKU3":[function(require,module,exports) {
-exports.interopDefault = function(a) {
-    return a && a.__esModule ? a : {
-        default: a
-    };
-};
-exports.defineInteropFlag = function(a) {
-    Object.defineProperty(a, "__esModule", {
-        value: true
-    });
-};
-exports.exportAll = function(source, dest) {
-    Object.keys(source).forEach(function(key) {
-        if (key === "default" || key === "__esModule" || dest.hasOwnProperty(key)) return;
-        Object.defineProperty(dest, key, {
-            enumerable: true,
-            get: function() {
-                return source[key];
-            }
-        });
-    });
-    return dest;
-};
-exports.export = function(dest, destName, get) {
-    Object.defineProperty(dest, destName, {
-        enumerable: true,
-        get: get
-    });
-};
-
-},{}],"ahg8w":[function(require,module,exports) {
-// Función para crear un retraso con async/await
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "espera", ()=>espera);
-function delay(duration) {
-    return new Promise((resolve)=>setTimeout(resolve, duration));
-}
-// Función asincrónica que utiliza el retraso
-async function espera() {
-    // Esperar 2 segundos (2000 milisegundos)
-    await delay(3500);
-}
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"gkKU3"}]},["j9r0q","ebWYT"], "ebWYT", "parcelRequireabb0")
-
-//# sourceMappingURL=index.739bf03c.js.map
+//# sourceMappingURL=testing.137098e6.js.map
