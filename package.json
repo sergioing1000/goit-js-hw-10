@@ -38,6 +38,7 @@
     "escape-string-regexp": "^1.0.5",
     "fill-range": "^7.0.1",
     "get-port": "^4.2.0",
+    "gh-pages": "^5.0.0",
     "globals": "^13.20.0",
     "has-flag": "^4.0.0",
     "htmlnano": "^2.0.4",
