@@ -580,6 +580,16 @@ document.addEventListener("DOMContentLoaded", function() {
         select: select
     });
 });
+console.log("primer paso");
+esperar();
+function delay(duration) {
+    return new Promise((resolve)=>setTimeout(resolve, duration));
+}
+async function esperar() {
+    await delay(3200);
+    console.log("L\xednea despu\xe9s de la pausa");
+}
+esperar();
 
 },{}]},["iUuJd","7LE31"], "7LE31", "parcelRequireabb0")
 
